@@ -1,0 +1,5 @@
+spawn:
+  world: //Weltname
+  x: //X-Koordininate
+  y: //Y-Koordininate
+  z: //Z-Koordininate

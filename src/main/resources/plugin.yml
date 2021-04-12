@@ -1,8 +1,8 @@
 name: HideAndSeek
-version: @version@
+version: ${version}
 main: me.gamewithjerry.hideandseek.HideAndSeek
 api-version: 1.16
-prefix: [ HideSeek ]
+prefix: HideSeek
 authors: [ GameWithJerry ]
 description: Minigame - Hide and Seek
 website: https://github.com/GameWithJerry/HideAndSeek
