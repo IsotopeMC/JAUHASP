@@ -1,22 +1,13 @@
 package me.gamewithjerry.hideandseek.inventories;
 
-import me.gamewithjerry.hideandseek.HideAndSeek;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.HashMap;
-import java.util.Map;
+import me.gamewithjerry.hideandseek.items.menu.QuitItem;
+import org.bukkit.entity.Player;
 
 public class LobbyInventory {
 
-    protected HideAndSeek instance;
+    public void updateInventory(Player player) {
+        player.getInventory().clear();
 
-    private final Map<Integer, ItemStack> items = new HashMap<>();
-
-    public LobbyInventory(HideAndSeek instance) {
-        this.instance = instance;
-
-
+        player.getInventory().setItem(8, new QuitItem().get());
     }
-
-
 }

@@ -1,6 +1,7 @@
 package me.gamewithjerry.hideandseek.game;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
+import me.gamewithjerry.hideandseek.inventories.LobbyInventory;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -27,6 +28,9 @@ public class GameUtils {
 
         players.put(player, instance.lobby);
         instance.lobby.addPlayer(player);
+
+        LobbyInventory li = new LobbyInventory();
+        li.updateInventory(player);
     }
 
     public void setToSpectator(Player player) {
