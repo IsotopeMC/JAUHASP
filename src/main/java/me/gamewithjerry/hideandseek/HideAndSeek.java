@@ -3,6 +3,7 @@ package me.gamewithjerry.hideandseek;
 import me.gamewithjerry.hideandseek.game.GameState;
 import me.gamewithjerry.hideandseek.game.GameTeam;
 import me.gamewithjerry.hideandseek.game.GameUtils;
+import me.gamewithjerry.hideandseek.items.ListenerCollection;
 import me.gamewithjerry.hideandseek.listener.PlayerJoinQuitListener;
 import me.gamewithjerry.hideandseek.listener.PlayerLoginListener;
 import org.bukkit.Bukkit;
@@ -16,7 +17,7 @@ public final class HideAndSeek extends JavaPlugin {
     public static PluginManager pluginManager = Bukkit.getPluginManager();
 
     public final String PREFIX = "§7[§eHide§2N§6Seek§7]§r ";
-    public final String NO_PERMISSIONS = PREFIX+ "§4Dazu hast du keine Rechte!";
+    public final String NO_PERMISSIONS = PREFIX + "§4Dazu hast du keine Rechte!";
 
     public final GameState gamestate = new GameState(this);
     public final GameUtils gameutils = new GameUtils(this);
@@ -27,6 +28,10 @@ public final class HideAndSeek extends JavaPlugin {
 
     public final GameTeam lobby = new GameTeam(this, "Spieler", Color.GRAY, false);
 
+    public static HideAndSeek getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
         instance = this;
@@ -34,10 +39,9 @@ public final class HideAndSeek extends JavaPlugin {
         pluginManager.registerEvents(new PlayerLoginListener(this), this);
         pluginManager.registerEvents(new PlayerJoinQuitListener(this), this);
 
-        this.gamestate.setToLobbyState();
-    }
+        ListenerCollection listenercollection = new ListenerCollection(this);
+        listenercollection.loadItemListeners();
 
-    public static HideAndSeek getInstance() {
-        return instance;
+        this.gamestate.setToLobbyState();
     }
 }

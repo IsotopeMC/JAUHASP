@@ -8,16 +8,15 @@ import java.util.Map;
 
 public class GameUtils {
 
-    protected HideAndSeek instance;
-
     public Map<Player, GameTeam> players = new HashMap<>();
+    protected HideAndSeek instance;
 
     public GameUtils(HideAndSeek instance) {
         this.instance = instance;
     }
 
     public void removeFromTeam(Player player) {
-        if(players.containsKey(player)) {
+        if (players.containsKey(player)) {
             players.get(player).removePlayer(player);
             players.remove(player);
         }

@@ -4,21 +4,17 @@ import me.gamewithjerry.hideandseek.HideAndSeek;
 
 public class GameState {
 
-    protected HideAndSeek instance;
-
     //0 = Server startet
     //1 = Lobby
     //2 = Im Spiel
     //3 = Beendet
     public Integer currentGamestate = 0;
-
     public Boolean canJoin = false;
     public Boolean canHitPlayers = false;
-
     public Boolean joinAsSpectator = false;
     public Boolean announceJoinAndQuits = false;
-
     public String joinMessage = "";
+    protected HideAndSeek instance;
 
     public GameState(HideAndSeek instance) {
         this.instance = instance;

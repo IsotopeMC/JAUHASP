@@ -9,12 +9,10 @@ import java.util.List;
 
 public class GameTeam {
 
-    protected final HideAndSeek instance;
-
     public final String name;
     public final Color color;
     public final Boolean hidden;
-
+    protected final HideAndSeek instance;
     public List<Player> players = new ArrayList<>();
 
     public GameTeam(HideAndSeek instance, String name, Color color, Boolean hidden) {

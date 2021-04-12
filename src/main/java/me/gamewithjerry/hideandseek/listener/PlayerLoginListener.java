@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class PlayerLoginListener implements Listener {
 
-    private HideAndSeek instance;
+    private final HideAndSeek instance;
 
     public PlayerLoginListener(HideAndSeek instance) {
         this.instance = instance;
@@ -15,7 +15,7 @@ public class PlayerLoginListener implements Listener {
 
     @EventHandler
     public void on(PlayerLoginEvent event) {
-        if(!instance.gamestate.canJoin) {
+        if (!instance.gamestate.canJoin) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Bitte warte noch einen Moment, bis der Server gestartet ist.");
         }
     }

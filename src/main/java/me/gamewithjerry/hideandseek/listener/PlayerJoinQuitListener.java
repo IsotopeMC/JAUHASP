@@ -1,6 +1,7 @@
 package me.gamewithjerry.hideandseek.listener;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -16,29 +17,34 @@ public class PlayerJoinQuitListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        if(instance.gamestate.announceJoinAndQuits) {
-            event.setJoinMessage(instance.PREFIX + event.getPlayer().getDisplayName() + " hat das Spiel betreten.");
+        Player player = event.getPlayer();
+
+        if (instance.gamestate.announceJoinAndQuits) {
+            event.setJoinMessage(instance.PREFIX + player.getDisplayName() + " hat das Spiel betreten.");
         } else {
             event.setJoinMessage("");
         }
 
-        if(instance.gamestate.joinAsSpectator) {
-            instance.gameutils.setToSpectator(event.getPlayer());
+        if (instance.gamestate.joinAsSpectator) {
+            instance.gameutils.setToSpectator(player);
         } else {
-            instance.gameutils.setToPlayer(event.getPlayer());
+            instance.gameutils.setToPlayer(player);
         }
 
-        instance.gameutils.teleportPlayer(event.getPlayer());
+        player.sendMessage(instance.gamestate.joinMessage);
+        instance.gameutils.teleportPlayer(player);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        if(instance.gamestate.announceJoinAndQuits) {
-            event.setQuitMessage(instance.PREFIX + event.getPlayer().getDisplayName() + " hat das Spiel verlassen.");
+        Player player = event.getPlayer();
+
+        if (instance.gamestate.announceJoinAndQuits) {
+            event.setQuitMessage(instance.PREFIX + player.getDisplayName() + " hat das Spiel verlassen.");
         } else {
             event.setQuitMessage("");
         }
 
-        instance.gameutils.removeFromTeam(event.getPlayer());
+        instance.gameutils.removeFromTeam(player);
     }
 }
