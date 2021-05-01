@@ -28,7 +28,7 @@ public class QuitItemListener implements Listener {
         QuitItem item = new QuitItem();
 
         if (inhand.getType().isItem()) {
-            if (inhand.getItemMeta().hasDisplayName() && inhand.getItemMeta().getDisplayName().equals(item.getName())) {
+            if (inhand.equals(item.get())) {
                 player.kickPlayer(null);
             }
         }

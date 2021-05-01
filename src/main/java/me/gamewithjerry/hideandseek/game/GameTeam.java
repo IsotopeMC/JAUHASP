@@ -12,12 +12,9 @@ public class GameTeam {
     public final String name;
     public final Color color;
     public final Boolean hidden;
-    protected final HideAndSeek instance;
     public List<Player> players = new ArrayList<>();
 
-    public GameTeam(HideAndSeek instance, String name, Color color, Boolean hidden) {
-        this.instance = instance;
-
+    public GameTeam(String name, Color color, Boolean hidden) {
         this.name = name;
         this.color = color;
         this.hidden = hidden;

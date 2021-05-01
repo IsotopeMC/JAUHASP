@@ -4,6 +4,7 @@ import me.gamewithjerry.hideandseek.game.GameState;
 import me.gamewithjerry.hideandseek.game.GameTeam;
 import me.gamewithjerry.hideandseek.game.GameUtils;
 import me.gamewithjerry.hideandseek.items.ListenerCollection;
+import me.gamewithjerry.hideandseek.listener.GameProtectionListener;
 import me.gamewithjerry.hideandseek.listener.PlayerJoinQuitListener;
 import me.gamewithjerry.hideandseek.listener.PlayerLoginListener;
 import org.bukkit.Bukkit;
@@ -22,11 +23,11 @@ public final class HideAndSeek extends JavaPlugin {
     public final GameState gamestate = new GameState(this);
     public final GameUtils gameutils = new GameUtils(this);
 
-    public final GameTeam hiders = new GameTeam(this, "Hider", Color.RED, false);
-    public final GameTeam seekers = new GameTeam(this, "Seeker", Color.YELLOW, false);
-    public final GameTeam spectators = new GameTeam(this, "Spectator", Color.GRAY, true);
+    public final GameTeam hiders = new GameTeam("Hider", Color.RED, false);
+    public final GameTeam seekers = new GameTeam("Seeker", Color.YELLOW, false);
+    public final GameTeam spectators = new GameTeam("Spectator", Color.GRAY, true);
 
-    public final GameTeam lobby = new GameTeam(this, "Spieler", Color.GRAY, false);
+    public final GameTeam lobby = new GameTeam("Spieler", Color.GRAY, false);
 
     public static HideAndSeek getInstance() {
         return instance;
@@ -38,6 +39,7 @@ public final class HideAndSeek extends JavaPlugin {
 
         pluginManager.registerEvents(new PlayerLoginListener(this), this);
         pluginManager.registerEvents(new PlayerJoinQuitListener(this), this);
+        pluginManager.registerEvents(new GameProtectionListener(this), this);
 
         ListenerCollection listenercollection = new ListenerCollection(this);
         listenercollection.loadItemListeners();

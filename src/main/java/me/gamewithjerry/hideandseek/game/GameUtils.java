@@ -57,4 +57,8 @@ public class GameUtils {
     public void teleportPlayer(Player player) {
 
     }
+
+    public GameTeam getPlayerTeam(Player player) {
+        return players.get(player);
+    }
 }
