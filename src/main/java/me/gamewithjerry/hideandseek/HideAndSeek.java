@@ -1,6 +1,5 @@
 package me.gamewithjerry.hideandseek;
 
-import jdk.jfr.internal.Utils;
 import me.gamewithjerry.hideandseek.game.GameState;
 import me.gamewithjerry.hideandseek.game.GameTeam;
 import me.gamewithjerry.hideandseek.game.GameUtils;
@@ -47,8 +46,8 @@ public final class HideAndSeek extends JavaPlugin {
         listOfWorlds = Bukkit.getWorlds();
 
         //create a copy of the main map
-        if(Bukkit.getWorld("temp_lobby") != null) {
-            utilsCollection.deleteWorld(Bukkit.getWorld("temp_lobby"));
+        if(Bukkit.getWorld("temp_lobbymap") != null) {
+            utilsCollection.deleteWorld(Bukkit.getWorld("temp_lobbymap"));
         }
 
         utilsCollection.copyWorld(listOfWorlds.get(0), "temp_lobbymap");
@@ -68,8 +67,8 @@ public final class HideAndSeek extends JavaPlugin {
     @Override
     public void onDisable() {
         //cleanup
-        if(Bukkit.getWorld("temp_lobby") != null) {
-            utilsCollection.deleteWorld(Bukkit.getWorld("temp_lobby"));
+        if(Bukkit.getWorld("temp_lobbymap") != null) {
+            utilsCollection.deleteWorld(Bukkit.getWorld("temp_lobbymap"));
         }
 
         if(Bukkit.getWorld("temp_gamemap") != null) {
