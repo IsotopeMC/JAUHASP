@@ -19,19 +19,19 @@ public class PlayerJoinQuitListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (instance.gamestate.announceJoinAndQuits) {
+        if (instance.gamestate.announceJoins()) {
             event.setJoinMessage(instance.PREFIX + player.getDisplayName() + " hat das Spiel betreten.");
         } else {
             event.setJoinMessage("");
         }
 
-        if (instance.gamestate.joinAsSpectator) {
+        if (instance.gamestate.joinAsSpectator()) {
             instance.gameutils.setToSpectator(player);
         } else {
             instance.gameutils.setToPlayer(player);
         }
 
-        player.sendMessage(instance.gamestate.joinMessage);
+        player.sendMessage(instance.gamestate.getJoinMessage());
         instance.gameutils.teleportPlayer(player);
     }
 
@@ -39,12 +39,12 @@ public class PlayerJoinQuitListener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        if (instance.gamestate.announceJoinAndQuits) {
+        instance.gameutils.removeFromTeam(player);
+
+        if (instance.gamestate.announceQuits()) {
             event.setQuitMessage(instance.PREFIX + player.getDisplayName() + " hat das Spiel verlassen.");
         } else {
             event.setQuitMessage("");
         }
-
-        instance.gameutils.removeFromTeam(player);
     }
 }

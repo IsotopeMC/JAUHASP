@@ -5,7 +5,10 @@ import me.gamewithjerry.hideandseek.helpers.ItemHelper;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class QuitItem extends GameItem {
+public class QuitItem implements GameItem {
+
+    private String name;
+    private Material material;
 
     public QuitItem() {
         this.name = "Verlassen";
@@ -14,5 +17,15 @@ public class QuitItem extends GameItem {
 
     public ItemStack get() {
         return new ItemHelper(material).setAmount(1).setDisplayname(name).get();
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public Material getMaterial() {
+        return this.material;
     }
 }

@@ -1,38 +1,48 @@
 package me.gamewithjerry.hideandseek.game;
 
-import me.gamewithjerry.hideandseek.HideAndSeek;
+public enum GameState {
+    STARTING(false, false, false, false, false, ""),
+    LOBBY(true, false, false, true, true, ""),
+    IN_GAME(true, true, true, false, true, ""),
+    ENDING(false, false, false, false, false, "");
 
-public class GameState {
+    private Boolean canJoin;
+    private Boolean canHitPlayers;
+    private Boolean joinAsSpectator;
+    private Boolean announceJoins;
+    private Boolean announceQuits;
+    private String joinMessage;
 
-    //0 = Server startet
-    //1 = Lobby
-    //2 = Im Spiel
-    //3 = Beendet
-    public Integer currentGamestate = 0;
-    public Boolean canJoin = false;
-    public Boolean canHitPlayers = false;
-    public Boolean joinAsSpectator = false;
-    public Boolean announceJoinAndQuits = false;
-    public String joinMessage = "";
-    protected HideAndSeek instance;
-
-    public GameState(HideAndSeek instance) {
-        this.instance = instance;
+    GameState(Boolean canJoin, Boolean canHitPlayers, Boolean joinAsSpectator, Boolean announceJoins, Boolean announceQuits, String joinMessage) {
+        this.canJoin = canJoin;
+        this.canHitPlayers = canHitPlayers;
+        this.joinAsSpectator = joinAsSpectator;
+        this.announceJoins = announceJoins;
+        this.announceQuits = announceQuits;
+        this.joinMessage = joinMessage;
     }
 
-    public void setToLobbyState() {
-        this.currentGamestate = 1;
+    public Boolean canJoin() {
+        return this.canJoin;
+    }
 
-        this.canJoin = true;
-        this.canHitPlayers = false;
+    public Boolean canHitPlayers() {
+        return this.canHitPlayers;
+    }
 
-        this.joinAsSpectator = false;
-        this.announceJoinAndQuits = true;
+    public Boolean joinAsSpectator() {
+        return this.joinAsSpectator;
+    }
 
-        StringBuilder joinMessage = new StringBuilder();
-        joinMessage.append(instance.PREFIX)
-                .append("Willkommen zu Hide and Seek!");
+    public Boolean announceJoins() {
+        return this.announceJoins;
+    }
 
-        this.joinMessage = joinMessage.toString();
+    public Boolean announceQuits() {
+        return this.announceQuits;
+    }
+
+    public String getJoinMessage() {
+        return this.joinMessage;
     }
 }

@@ -1,6 +1,5 @@
 package me.gamewithjerry.hideandseek.game;
 
-import me.gamewithjerry.hideandseek.HideAndSeek;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
 

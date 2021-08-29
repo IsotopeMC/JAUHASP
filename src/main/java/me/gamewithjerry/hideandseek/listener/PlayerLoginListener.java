@@ -15,7 +15,7 @@ public class PlayerLoginListener implements Listener {
 
     @EventHandler
     public void on(PlayerLoginEvent event) {
-        if (!instance.gamestate.canJoin) {
+        if (!instance.gamestate.canJoin()) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Bitte warte noch einen Moment, bis der Server gestartet ist.");
         }
     }
