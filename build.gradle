@@ -10,8 +10,8 @@ tasks.withType(JavaCompile) {
 group = 'me.gamewithjerry'
 version "git-${getVersionMetadata()}"
 
-sourceCompatibility = '1.11'
-targetCompatibility = '1.11'
+sourceCompatibility = '1.16'
+targetCompatibility = '1.16'
 
 repositories {
     mavenCentral()
@@ -26,19 +26,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
 }
 
 processResources {
     inputs.property "version", project.version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include "plugin.yml"
+    filesMatching("plugin.yml") {
         expand "version": project.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "plugin.yml"
     }
 }
 
