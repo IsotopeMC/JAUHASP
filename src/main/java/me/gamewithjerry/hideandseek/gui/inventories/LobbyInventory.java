@@ -1,6 +1,6 @@
-package me.gamewithjerry.hideandseek.inventories;
+package me.gamewithjerry.hideandseek.gui.inventories;
 
-import me.gamewithjerry.hideandseek.items.menu.QuitItem;
+import me.gamewithjerry.hideandseek.gui.items.QuitItem;
 import org.bukkit.entity.Player;
 
 public class LobbyInventory {

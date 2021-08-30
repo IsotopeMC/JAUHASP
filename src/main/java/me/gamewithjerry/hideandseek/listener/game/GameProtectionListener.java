@@ -1,4 +1,4 @@
-package me.gamewithjerry.hideandseek.listener;
+package me.gamewithjerry.hideandseek.listener.game;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
 import org.bukkit.entity.Player;
@@ -6,13 +6,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
 
 public class GameProtectionListener implements Listener {
 
@@ -50,6 +54,26 @@ public class GameProtectionListener implements Listener {
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onHunger(FoodLevelChangeEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onChunkSave(ChunkUnloadEvent event) {
+        event.setSaveChunk(false);
+    }
+
+    @EventHandler
+    public void onEntityExplosion(EntityExplodeEvent event) {
+        event.blockList().clear();
+    }
+
+    @EventHandler
+    public void onBlockExplosion(BlockExplodeEvent event) {
+        event.blockList().clear();
     }
 
     @EventHandler

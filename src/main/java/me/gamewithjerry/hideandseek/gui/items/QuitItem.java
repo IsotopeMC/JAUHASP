@@ -1,4 +1,4 @@
-package me.gamewithjerry.hideandseek.items.menu;
+package me.gamewithjerry.hideandseek.gui.items;
 
 import me.gamewithjerry.hideandseek.game.GameItem;
 import me.gamewithjerry.hideandseek.helpers.ItemHelper;

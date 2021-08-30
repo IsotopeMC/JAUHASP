@@ -1,7 +1,7 @@
 package me.gamewithjerry.hideandseek.game;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
-import me.gamewithjerry.hideandseek.inventories.LobbyInventory;
+import me.gamewithjerry.hideandseek.gui.inventories.LobbyInventory;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;

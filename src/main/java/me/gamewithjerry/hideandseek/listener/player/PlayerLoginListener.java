@@ -1,4 +1,4 @@
-package me.gamewithjerry.hideandseek.listener;
+package me.gamewithjerry.hideandseek.listener.player;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
 import org.bukkit.event.EventHandler;

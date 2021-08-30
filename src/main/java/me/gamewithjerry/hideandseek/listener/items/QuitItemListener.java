@@ -1,6 +1,7 @@
-package me.gamewithjerry.hideandseek.items.menu;
+package me.gamewithjerry.hideandseek.listener.items;
 
 import me.gamewithjerry.hideandseek.HideAndSeek;
+import me.gamewithjerry.hideandseek.gui.items.QuitItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

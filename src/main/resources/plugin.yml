@@ -6,3 +6,5 @@ prefix: HideSeek
 authors: [ GameWithJerry ]
 description: Minigame - Hide and Seek
 website: https://github.com/UnstableProgrammers/HideAndSeek
+commands:
+  gamestate:

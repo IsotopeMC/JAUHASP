@@ -1,21 +1,18 @@
 package me.gamewithjerry.hideandseek;
 
+import me.gamewithjerry.hideandseek.commands.HNSCommands;
 import me.gamewithjerry.hideandseek.game.GameState;
 import me.gamewithjerry.hideandseek.game.GameTeam;
 import me.gamewithjerry.hideandseek.game.GameUtils;
-import me.gamewithjerry.hideandseek.items.ListenerCollection;
-import me.gamewithjerry.hideandseek.listener.GameProtectionListener;
-import me.gamewithjerry.hideandseek.listener.PlayerJoinQuitListener;
-import me.gamewithjerry.hideandseek.listener.PlayerLoginListener;
+import me.gamewithjerry.hideandseek.listener.HNSListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
-import org.bukkit.plugin.PluginManager;
+import org.bukkit.GameRule;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HideAndSeek extends JavaPlugin {
 
     public static HideAndSeek instance;
-    public static PluginManager pluginManager = Bukkit.getPluginManager();
 
     public final String PREFIX = "§7[§eHide§2N§6Seek§7]§r ";
     public final String NO_PERMISSIONS = PREFIX + "§4Dazu hast du keine Rechte!";
@@ -37,14 +34,23 @@ public final class HideAndSeek extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        //register Events
-        pluginManager.registerEvents(new PlayerLoginListener(this), this);
-        pluginManager.registerEvents(new PlayerJoinQuitListener(this), this);
-        pluginManager.registerEvents(new GameProtectionListener(this), this);
+        //register Listener
+        HNSListener.registerListener(this);
 
-        //register all Events in ListernerCollection
-        ListenerCollection listenercollection = new ListenerCollection(this);
-        listenercollection.loadItemListeners();
+        //register Commands
+        HNSCommands.registerCommands(this);
+
+        //disable natural mob spawning
+        Bukkit.getServer().getWorlds().forEach((world)->{
+            world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+            world.setGameRule(GameRule.DISABLE_RAIDS, true);
+            world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+            world.setGameRule(GameRule.DO_FIRE_TICK, false);
+            world.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+            world.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+            world.setGameRule(GameRule.DO_TRADER_SPAWNING, false);
+            world.setGameRule(GameRule.MOB_GRIEFING, false);
+        });
 
         this.gamestate = GameState.LOBBY;
     }
