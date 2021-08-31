@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("EmptyMethod")
 public class GameTeam {
 
     public final String name;
@@ -23,6 +24,10 @@ public class GameTeam {
         this.players.add(player);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void removePlayer(Player player) {
         this.players.remove(player);
     }
@@ -30,4 +35,8 @@ public class GameTeam {
     public boolean containsPlayer(Player player) {
         return this.players.contains(player);
     }
+
+    public void updateInventory(Player player) {}
+
+    public void updateScoreboard(Player player) {}
 }

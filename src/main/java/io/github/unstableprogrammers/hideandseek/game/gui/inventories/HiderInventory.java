@@ -1,9 +1,9 @@
-package io.github.unstableprogrammers.hideandseek.gui.inventories;
+package io.github.unstableprogrammers.hideandseek.game.gui.inventories;
 
-import io.github.unstableprogrammers.hideandseek.gui.items.armor.hider.HiderHelmetItem;
-import io.github.unstableprogrammers.hideandseek.gui.items.armor.hider.HiderBootsItem;
-import io.github.unstableprogrammers.hideandseek.gui.items.armor.hider.HiderChestplateItem;
-import io.github.unstableprogrammers.hideandseek.gui.items.armor.hider.HiderLeggingsItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderBootsItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderChestplateItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderHelmetItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderLeggingsItem;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 

@@ -26,20 +26,20 @@ public class PlayerJoinQuitListener implements Listener {
         }
 
         if (instance.gamestate.joinAsSpectator()) {
-            instance.gameutils.setToSpectator(player);
+            instance.teams.setToSpectator(player);
         } else {
-            instance.gameutils.setToPlayer(player);
+            instance.teams.setToLobby(player);
         }
 
         player.sendMessage(instance.gamestate.getJoinMessage());
-        instance.gameutils.teleportPlayer(player);
+        instance.teams.teleportPlayer(player);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        instance.gameutils.removeFromTeam(player);
+        instance.teams.removeFromTeam(player);
 
         if (instance.gamestate.announceQuits()) {
             event.setQuitMessage(instance.PREFIX + player.getDisplayName() + " hat das Spiel verlassen.");

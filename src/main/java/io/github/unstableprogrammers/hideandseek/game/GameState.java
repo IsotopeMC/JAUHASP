@@ -1,25 +1,26 @@
 package io.github.unstableprogrammers.hideandseek.game;
 
+@SuppressWarnings("FieldMayBeFinal")
 public enum GameState {
-    STARTING(false, false, false, false, false, ""),
-    LOBBY(true, false, false, true, true, ""),
-    IN_GAME(true, true, true, false, true, ""),
-    ENDING(false, false, false, false, false, "");
+    STARTING(false, false, false, false, false),
+    LOBBY(true, false, false, true, true),
+    IN_GAME(true, true, true, false, true),
+    ENDING(false, false, false, false, false);
 
-    private Boolean canJoin;
-    private Boolean canHitPlayers;
-    private Boolean joinAsSpectator;
-    private Boolean announceJoins;
-    private Boolean announceQuits;
-    private String joinMessage;
+    private final Boolean canJoin;
+    private final Boolean canHitPlayers;
+    private final Boolean joinAsSpectator;
+    private final Boolean announceJoins;
+    private final Boolean announceQuits;
+    private final String joinMessage;
 
-    GameState(Boolean canJoin, Boolean canHitPlayers, Boolean joinAsSpectator, Boolean announceJoins, Boolean announceQuits, String joinMessage) {
+    GameState(Boolean canJoin, Boolean canHitPlayers, Boolean joinAsSpectator, Boolean announceJoins, Boolean announceQuits) {
         this.canJoin = canJoin;
         this.canHitPlayers = canHitPlayers;
         this.joinAsSpectator = joinAsSpectator;
         this.announceJoins = announceJoins;
         this.announceQuits = announceQuits;
-        this.joinMessage = joinMessage;
+        this.joinMessage = "";
     }
 
     public Boolean canJoin() {

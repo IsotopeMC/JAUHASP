@@ -1,6 +1,6 @@
-package io.github.unstableprogrammers.hideandseek.gui.inventories;
+package io.github.unstableprogrammers.hideandseek.game.gui.inventories;
 
-import io.github.unstableprogrammers.hideandseek.gui.items.QuitItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.QuitItem;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 

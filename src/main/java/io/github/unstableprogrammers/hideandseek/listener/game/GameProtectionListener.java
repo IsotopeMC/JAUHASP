@@ -20,7 +20,7 @@ import org.bukkit.event.world.ChunkUnloadEvent;
 
 public class GameProtectionListener implements Listener {
 
-    protected HideAndSeek instance;
+    protected final HideAndSeek instance;
 
     public GameProtectionListener(HideAndSeek instance) {
         this.instance = instance;
@@ -78,7 +78,7 @@ public class GameProtectionListener implements Listener {
 
     @EventHandler
     public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        if(!(event.getDamager() instanceof Player) || !(event.getEntity() instanceof Player)) {
+        if(!(event.getDamager() instanceof Player damager) || !(event.getEntity() instanceof Player damaged)) {
             event.setCancelled(true);
             return;
         }
@@ -88,16 +88,9 @@ public class GameProtectionListener implements Listener {
             return;
         }
 
-        Player damager = (Player) event.getDamager();
-        Player damaged = (Player) event.getEntity();
-
         //Wenn der Spieler im Sucher-Team ist.
-        if(instance.gameutils.getPlayerTeam(damager).name.equals("Seeker")) {
-
-            //Wenn der geschädigte nicht Sucher-Team ist.
-            if(instance.gameutils.getPlayerTeam(damaged).name.equals("Seeker")) {
-                event.setCancelled(true);
-            }
+        if(instance.teams.isSeeker(damager) && instance.teams.isSeeker(damaged)) {
+            event.setCancelled(true);
         }
     }
 

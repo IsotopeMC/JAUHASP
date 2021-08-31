@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class GameStateCommand implements CommandExecutor {
 
-    public HideAndSeek instance;
+    protected final HideAndSeek instance;
 
     public GameStateCommand(HideAndSeek instance) {
         this.instance = instance;
@@ -17,8 +17,7 @@ public class GameStateCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!(sender instanceof Player)) { return false; }
-        Player player = (Player) sender;
+        if(!(sender instanceof Player player)) { return false; }
 
         if(args.length != 0) {
             switch (args[0]) {
@@ -29,7 +28,7 @@ public class GameStateCommand implements CommandExecutor {
             }
         }
 
-        player.sendMessage(instance.PREFIX + "Der aktuelle GameState ist: "+instance.gamestate.name());
+        player.sendMessage(instance.PREFIX + "Dein aktueller GameState ist: "+instance.gamestate.name());
         return true;
     }
 }

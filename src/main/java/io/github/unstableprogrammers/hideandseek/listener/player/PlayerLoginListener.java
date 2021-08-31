@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class PlayerLoginListener implements Listener {
 
-    private final HideAndSeek instance;
+    protected HideAndSeek instance;
 
     public PlayerLoginListener(HideAndSeek instance) {
         this.instance = instance;

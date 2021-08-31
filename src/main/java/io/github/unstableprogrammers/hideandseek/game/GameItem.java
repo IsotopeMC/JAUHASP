@@ -6,9 +6,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class GameItem {
 
-    protected String name;
-    protected Material material;
-    protected Integer amount;
+    protected final String name;
+    protected final Material material;
+    protected final Integer amount;
 
     public GameItem(String name, Material material, Integer amount) {
         this.name = name;

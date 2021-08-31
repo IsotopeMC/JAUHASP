@@ -2,12 +2,11 @@ package io.github.unstableprogrammers.hideandseek;
 
 import io.github.unstableprogrammers.hideandseek.commands.HNSCommands;
 import io.github.unstableprogrammers.hideandseek.game.GameState;
-import io.github.unstableprogrammers.hideandseek.game.GameTeam;
-import io.github.unstableprogrammers.hideandseek.game.GameUtils;
+import io.github.unstableprogrammers.hideandseek.game.events.GameStateUpdateEvent;
+import io.github.unstableprogrammers.hideandseek.helpers.TeamHelper;
+import io.github.unstableprogrammers.hideandseek.helpers.WorldHelper;
 import io.github.unstableprogrammers.hideandseek.listener.HNSListener;
 import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.GameRule;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HideAndSeek extends JavaPlugin {
@@ -18,13 +17,7 @@ public final class HideAndSeek extends JavaPlugin {
     public final String NO_PERMISSIONS = PREFIX + "§4Dazu hast du keine Rechte!";
 
     public GameState gamestate = GameState.STARTING;
-    public final GameUtils gameutils = new GameUtils(this);
-
-    public final GameTeam hiders = new GameTeam("Hider", Color.RED, false);
-    public final GameTeam seekers = new GameTeam("Seeker", Color.YELLOW, false);
-    public final GameTeam spectators = new GameTeam("Spectator", Color.GRAY, true);
-
-    public final GameTeam lobby = new GameTeam("Spieler", Color.GRAY, false);
+    public TeamHelper teams = new TeamHelper(this);
 
     public static HideAndSeek getInstance() {
         return instance;
@@ -40,22 +33,21 @@ public final class HideAndSeek extends JavaPlugin {
         //register Commands
         HNSCommands.registerCommands(this);
 
-        //disable natural mob spawning
+        //perform various actions on all worlds
         Bukkit.getServer().getWorlds().forEach((world)->{
-            world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-            world.setGameRule(GameRule.DISABLE_RAIDS, true);
-            world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
-            world.setGameRule(GameRule.DO_FIRE_TICK, false);
-            world.setGameRule(GameRule.DO_MOB_SPAWNING, false);
-            world.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
-            world.setGameRule(GameRule.DO_TRADER_SPAWNING, false);
-            world.setGameRule(GameRule.MOB_GRIEFING, false);
+            WorldHelper.setGameRules(world);
+            WorldHelper.killNonMapEntities(world);
         });
 
-        this.gamestate = GameState.LOBBY;
+        setGamestate(GameState.LOBBY);
     }
 
     @Override
     public void onDisable() {
+    }
+
+    public void setGamestate(GameState state) {
+        this.gamestate = state;
+        Bukkit.getPluginManager().callEvent(new GameStateUpdateEvent(state));
     }
 }

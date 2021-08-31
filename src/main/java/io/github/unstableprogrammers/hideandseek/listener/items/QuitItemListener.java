@@ -1,7 +1,7 @@
 package io.github.unstableprogrammers.hideandseek.listener.items;
 
 import io.github.unstableprogrammers.hideandseek.HideAndSeek;
-import io.github.unstableprogrammers.hideandseek.gui.items.QuitItem;
+import io.github.unstableprogrammers.hideandseek.game.gui.items.QuitItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
