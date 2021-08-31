@@ -2,12 +2,15 @@ package me.gamewithjerry.hideandseek.gui.inventories;
 
 import me.gamewithjerry.hideandseek.gui.items.QuitItem;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 
 public class LobbyInventory {
 
-    public void updateInventory(Player player) {
-        player.getInventory().clear();
+    public void setInventory(Player player) {
+        PlayerInventory pinv = player.getInventory();
 
-        player.getInventory().setItem(8, new QuitItem().get());
+        pinv.clear();
+
+        pinv.setItem(8, new QuitItem().get());
     }
 }

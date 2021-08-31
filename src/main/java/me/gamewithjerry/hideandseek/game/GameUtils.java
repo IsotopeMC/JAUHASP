@@ -30,7 +30,7 @@ public class GameUtils {
         instance.lobby.addPlayer(player);
 
         LobbyInventory li = new LobbyInventory();
-        li.updateInventory(player);
+        li.setInventory(player);
     }
 
     public void setToSpectator(Player player) {
