@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 public final class GameStateUpdateEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
-    private GameState gamestate;
+    private final GameState gamestate;
 
     public GameStateUpdateEvent(GameState gamestate) {
         this.gamestate = gamestate;

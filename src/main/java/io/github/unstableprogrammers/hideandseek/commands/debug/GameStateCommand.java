@@ -17,9 +17,11 @@ public class GameStateCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!(sender instanceof Player player)) { return false; }
+        if (!(sender instanceof Player player)) {
+            return false;
+        }
 
-        if(args.length != 0) {
+        if (args.length != 0) {
             switch (args[0]) {
                 case "LOBBY" -> instance.gamestate = GameState.LOBBY;
                 case "IN_GAME" -> instance.gamestate = GameState.IN_GAME;
@@ -28,7 +30,7 @@ public class GameStateCommand implements CommandExecutor {
             }
         }
 
-        player.sendMessage(instance.PREFIX + "Dein aktueller GameState ist: "+instance.gamestate.name());
+        player.sendMessage(instance.PREFIX + "Dein aktueller GameState ist: " + instance.gamestate.name());
         return true;
     }
 }

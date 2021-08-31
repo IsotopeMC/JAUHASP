@@ -16,9 +16,11 @@ public class GameTeamCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!(sender instanceof Player player)) { return false; }
+        if (!(sender instanceof Player player)) {
+            return false;
+        }
 
-        if(args.length != 0) {
+        if (args.length != 0) {
             switch (args[0]) {
                 case "LOBBY" -> instance.teams.setToLobby(player);
                 case "SPECTATOR" -> instance.teams.setToSpectator(player);
@@ -28,7 +30,7 @@ public class GameTeamCommand implements CommandExecutor {
             }
         }
 
-        player.sendMessage(instance.PREFIX + "Dein aktuelles Team ist: "+instance.teams.getTeamOfPlayer(player).getName());
+        player.sendMessage(instance.PREFIX + "Dein aktuelles Team ist: " + instance.teams.getTeamOfPlayer(player).getName());
         return true;
     }
 }

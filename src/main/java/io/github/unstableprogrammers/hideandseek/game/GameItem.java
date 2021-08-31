@@ -15,6 +15,7 @@ public class GameItem {
         this.material = material;
         this.amount = amount;
     }
+
     public ItemStack get() {
         return new ItemHelper(this.getMaterial()).setAmount(this.getAmount()).setDisplayname(this.getName()).get();
     }

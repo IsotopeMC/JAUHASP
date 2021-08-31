@@ -18,7 +18,7 @@ public class WorldHelper {
     }
 
     public static void killNonMapEntities(World world) {
-        for(LivingEntity entity : world.getLivingEntities()) {
+        for (LivingEntity entity : world.getLivingEntities()) {
             entity.remove();
         }
     }

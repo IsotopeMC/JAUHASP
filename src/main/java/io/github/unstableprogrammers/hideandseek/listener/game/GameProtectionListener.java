@@ -78,18 +78,18 @@ public class GameProtectionListener implements Listener {
 
     @EventHandler
     public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        if(!(event.getDamager() instanceof Player damager) || !(event.getEntity() instanceof Player damaged)) {
+        if (!(event.getDamager() instanceof Player damager) || !(event.getEntity() instanceof Player damaged)) {
             event.setCancelled(true);
             return;
         }
 
-        if(!instance.gamestate.canHitPlayers()) {
+        if (!instance.gamestate.canHitPlayers()) {
             event.setCancelled(true);
             return;
         }
 
         //Wenn der Spieler im Sucher-Team ist.
-        if(instance.teams.isSeeker(damager) && instance.teams.isSeeker(damaged)) {
+        if (instance.teams.isSeeker(damager) && instance.teams.isSeeker(damaged)) {
             event.setCancelled(true);
         }
     }

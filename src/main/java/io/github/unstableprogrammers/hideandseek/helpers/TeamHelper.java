@@ -31,7 +31,7 @@ public class TeamHelper {
     }
 
     public void removeFromTeam(Player player) {
-        if(players.containsKey(player)) {
+        if (players.containsKey(player)) {
             players.get(player).removePlayer(player);
         }
     }

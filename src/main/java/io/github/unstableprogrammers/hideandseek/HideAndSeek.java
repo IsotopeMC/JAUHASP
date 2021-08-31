@@ -34,7 +34,7 @@ public final class HideAndSeek extends JavaPlugin {
         HNSCommands.registerCommands(this);
 
         //perform various actions on all worlds
-        Bukkit.getServer().getWorlds().forEach((world)->{
+        Bukkit.getServer().getWorlds().forEach((world) -> {
             WorldHelper.setGameRules(world);
             WorldHelper.killNonMapEntities(world);
         });
