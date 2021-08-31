@@ -1,6 +1,6 @@
 name: HideAndSeek
 version: ${version}
-main: me.gamewithjerry.hideandseek.HideAndSeek
+main: io.github.unstableprogrammers.hideandseek.HideAndSeek
 api-version: 1.16
 prefix: HideSeek
 authors: [ GameWithJerry ]
