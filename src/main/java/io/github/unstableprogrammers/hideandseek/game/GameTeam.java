@@ -6,8 +6,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("EmptyMethod")
-public class GameTeam {
+public abstract class GameTeam {
 
     public final String name;
     public final Color color;
@@ -36,7 +35,7 @@ public class GameTeam {
         return this.players.contains(player);
     }
 
-    public void updateInventory(Player player) {}
+    public abstract void updateInventory(Player player);
 
-    public void updateScoreboard(Player player) {}
+    public abstract void updateScoreboard(Player player);
 }

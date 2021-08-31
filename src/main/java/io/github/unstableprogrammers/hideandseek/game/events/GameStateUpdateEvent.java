@@ -4,8 +4,7 @@ import io.github.unstableprogrammers.hideandseek.game.GameState;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-@SuppressWarnings("FieldMayBeFinal")
-public class GameStateUpdateEvent extends Event {
+public final class GameStateUpdateEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
     private GameState gamestate;
@@ -16,6 +15,10 @@ public class GameStateUpdateEvent extends Event {
 
     @Override
     public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
         return handlers;
     }
 
