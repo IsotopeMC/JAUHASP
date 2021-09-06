@@ -14,13 +14,11 @@ import java.util.Map;
 public class TeamHelper {
 
     protected final HideAndSeek instance;
-
-    protected Map<Player, GameTeam> players = new HashMap<>();
-
     protected final GameTeam LOBBY = new LobbyTeam();
     protected final GameTeam HIDER = new HiderTeam();
     protected final GameTeam SEEKER = new SeekerTeam();
     protected final GameTeam SPECS = new SpectatorTeam();
+    protected Map<Player, GameTeam> players = new HashMap<>();
 
     public TeamHelper(HideAndSeek instance) {
         this.instance = instance;

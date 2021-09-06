@@ -13,12 +13,12 @@ public final class GameStateUpdateEvent extends Event {
         this.gamestate = gamestate;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return handlers;
     }
 
-    public static HandlerList getHandlerList() {
+    @Override
+    public HandlerList getHandlers() {
         return handlers;
     }
 
