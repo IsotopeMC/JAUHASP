@@ -27,10 +27,8 @@ public final class HideAndSeek extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        //register Listener
+        //register Listener & Commands
         HNSListener.registerListener(this);
-
-        //register Commands
         HNSCommands.registerCommands(this);
 
         //perform various actions on all worlds

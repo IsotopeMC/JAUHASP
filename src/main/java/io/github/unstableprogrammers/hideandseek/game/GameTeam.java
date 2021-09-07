@@ -21,6 +21,7 @@ public abstract class GameTeam {
 
     public void addPlayer(Player player) {
         this.players.add(player);
+        this.updateInventory(player);
     }
 
     public String getName() {
