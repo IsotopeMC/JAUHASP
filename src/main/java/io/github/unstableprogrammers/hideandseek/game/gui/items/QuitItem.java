@@ -5,6 +5,6 @@ import org.bukkit.Material;
 
 public class QuitItem extends GameItem {
     public QuitItem() {
-        super("Verlassen", Material.MAGMA_CREAM, 1);
+        super("Verlassen", Material.MAGMA_CREAM, 1, true);
     }
 }

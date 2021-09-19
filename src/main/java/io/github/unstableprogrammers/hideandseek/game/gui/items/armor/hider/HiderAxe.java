@@ -3,8 +3,8 @@ package io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider;
 import io.github.unstableprogrammers.hideandseek.game.GameItem;
 import org.bukkit.Material;
 
-public class HiderBootsItem extends GameItem {
-    public HiderBootsItem() {
-        super("Verstecker Stiefel", Material.NETHERITE_BOOTS, 1, true);
+public class HiderAxe extends GameItem {
+    public HiderAxe() {
+        super("Sucher-Axt", Material.IRON_AXE, 1, true);
     }
 }

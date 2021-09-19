@@ -1,6 +1,7 @@
 package io.github.unstableprogrammers.hideandseek.game;
 
 import io.github.unstableprogrammers.hideandseek.helpers.ItemHelper;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -9,15 +10,26 @@ public class GameItem {
     protected final String name;
     protected final Material material;
     protected final Integer amount;
+    protected final Boolean unbreakable;
 
-    public GameItem(String name, Material material, Integer amount) {
+    protected Color color;
+
+    public GameItem(String name, Material material, Integer amount, Boolean unbreakable) {
         this.name = name;
         this.material = material;
         this.amount = amount;
+        this.unbreakable = unbreakable;
     }
 
     public ItemStack get() {
-        return new ItemHelper(this.getMaterial()).setAmount(this.getAmount()).setDisplayname(this.getName()).get();
+        ItemHelper helper = new ItemHelper(this.getMaterial());
+        helper.setAmount(this.getAmount()).setDisplayname(this.getName()).setUnbreakable(this.isUnbreakable());
+
+        if(this.getColor() != null) {
+            helper.setColor(this.getColor());
+        }
+
+        return helper.get();
     }
 
     public String getName() {
@@ -30,5 +42,17 @@ public class GameItem {
 
     public Material getMaterial() {
         return this.material;
+    }
+
+    public Color getColor() {
+        return this.color;
+    }
+
+    public Boolean isUnbreakable() {
+        return this.unbreakable;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

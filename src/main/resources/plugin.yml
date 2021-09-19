@@ -1,11 +1,11 @@
 name: HideAndSeek
 version: ${version}
 main: io.github.unstableprogrammers.hideandseek.HideAndSeek
-api-version: 1.16
+api-version: 1.17
 prefix: HideSeek
 authors: [ GameWithJerry ]
 description: Minigame - Hide and Seek
-website: https://github.com/UnstableProgrammers/HideAndSeek
+website: https://github.com/UnstableProgrammers/JAUHASP
 commands:
   gamestate:
   gameteam:

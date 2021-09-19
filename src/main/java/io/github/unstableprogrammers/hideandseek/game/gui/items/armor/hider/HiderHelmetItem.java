@@ -6,6 +6,6 @@ import org.bukkit.Material;
 public class HiderHelmetItem extends GameItem {
 
     public HiderHelmetItem() {
-        super("Verstecker Helm", Material.NETHERITE_HELMET, 1);
+        super("Verstecker Helm", Material.NETHERITE_HELMET, 1, true);
     }
 }

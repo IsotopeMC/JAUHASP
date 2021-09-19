@@ -1,5 +1,6 @@
 package io.github.unstableprogrammers.hideandseek.game.gui.inventories;
 
+import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderAxe;
 import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderBootsItem;
 import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderChestplateItem;
 import io.github.unstableprogrammers.hideandseek.game.gui.items.armor.hider.HiderHelmetItem;
@@ -18,5 +19,7 @@ public class HiderInventory {
         pinv.setChestplate(new HiderChestplateItem().get());
         pinv.setLeggings(new HiderLeggingsItem().get());
         pinv.setBoots(new HiderBootsItem().get());
+
+        pinv.setItem(0, new HiderAxe().get());
     }
 }

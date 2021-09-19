@@ -9,7 +9,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -88,14 +87,14 @@ public class GameProtectionListener implements Listener {
             return;
         }
 
-        //Wenn der Spieler im Sucher-Team ist.
+        //Wenn beide Spieler im Sucher-Team sind.
         if (instance.teams.isSeeker(damager) && instance.teams.isSeeker(damaged)) {
             event.setCancelled(true);
         }
-    }
 
-    @EventHandler
-    public void onPlayerDamage(EntityDamageEvent event) {
-        event.setCancelled(true);
+        //Wenn einer von beiden Spectaor ist.
+        if(instance.teams.isSpectator(damager) || instance.teams.isSpectator(damaged)) {
+            event.setCancelled(true);
+        }
     }
 }

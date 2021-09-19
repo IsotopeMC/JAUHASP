@@ -1,8 +1,10 @@
 package io.github.unstableprogrammers.hideandseek.helpers;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ItemHelper {
 
@@ -21,6 +23,17 @@ public class ItemHelper {
 
     public ItemHelper setAmount(Integer amount) {
         itemstack.setAmount(amount);
+        return this;
+    }
+
+    public ItemHelper setColor(Color color) {
+        LeatherArmorMeta meta = (LeatherArmorMeta) itemmeta;
+        meta.setColor(color);
+        return this;
+    }
+
+    public ItemHelper setUnbreakable(Boolean bool) {
+        itemmeta.setUnbreakable(bool);
         return this;
     }
 

@@ -1,13 +1,14 @@
 package io.github.unstableprogrammers.hideandseek.game.teams;
 
+import io.github.unstableprogrammers.hideandseek.HideAndSeek;
 import io.github.unstableprogrammers.hideandseek.game.GameTeam;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
 
 public class SpectatorTeam extends GameTeam {
 
-    public SpectatorTeam() {
-        super("Spectator", Color.GRAY, true);
+    public SpectatorTeam(HideAndSeek instance) {
+        super(instance, "Spectator", Color.GRAY, true);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class LightningBoltDeath extends DeathVisuals {
         assert world != null;
         world.spawnParticle(Particle.EXPLOSION_NORMAL, location, 10);
         world.spawnParticle(Particle.EXPLOSION_LARGE, location, 1);
+        world.spawnParticle(Particle.EXPLOSION_HUGE, location, 1);
         world.strikeLightning(location);
     }
 }

@@ -15,6 +15,7 @@ public class WorldHelper {
         world.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
         world.setGameRule(GameRule.DO_TRADER_SPAWNING, false);
         world.setGameRule(GameRule.MOB_GRIEFING, false);
+        world.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
     }
 
     public static void killNonMapEntities(World world) {

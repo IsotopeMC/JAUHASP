@@ -1,5 +1,6 @@
 package io.github.unstableprogrammers.hideandseek.game;
 
+import io.github.unstableprogrammers.hideandseek.HideAndSeek;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
 
@@ -8,12 +9,16 @@ import java.util.List;
 
 public abstract class GameTeam {
 
-    public final String name;
-    public final Color color;
-    public final Boolean hidden;
-    public List<Player> players = new ArrayList<>();
+    protected HideAndSeek instance;
 
-    public GameTeam(String name, Color color, Boolean hidden) {
+    protected final String name;
+    protected final Color color;
+    protected final Boolean hidden;
+    protected List<Player> players = new ArrayList<>();
+
+    public GameTeam(HideAndSeek instance, String name, Color color, Boolean hidden) {
+        this.instance = instance;
+
         this.name = name;
         this.color = color;
         this.hidden = hidden;
@@ -22,6 +27,8 @@ public abstract class GameTeam {
     public void addPlayer(Player player) {
         this.players.add(player);
         this.updateInventory(player);
+
+        //TODO: Update Hidden Players
     }
 
     public String getName() {
@@ -30,6 +37,8 @@ public abstract class GameTeam {
 
     public void removePlayer(Player player) {
         this.players.remove(player);
+
+        //TODO: Update Hidden Players
     }
 
     public boolean containsPlayer(Player player) {

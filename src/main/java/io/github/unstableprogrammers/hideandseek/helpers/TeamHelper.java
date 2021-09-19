@@ -14,14 +14,19 @@ import java.util.Map;
 public class TeamHelper {
 
     protected final HideAndSeek instance;
-    protected final GameTeam LOBBY = new LobbyTeam();
-    protected final GameTeam HIDER = new HiderTeam();
-    protected final GameTeam SEEKER = new SeekerTeam();
-    protected final GameTeam SPECS = new SpectatorTeam();
+    protected final GameTeam LOBBY;
+    protected final GameTeam HIDER;
+    protected final GameTeam SEEKER;
+    protected final GameTeam SPECS;
     protected Map<Player, GameTeam> players = new HashMap<>();
 
     public TeamHelper(HideAndSeek instance) {
         this.instance = instance;
+
+        this.LOBBY = new LobbyTeam(instance);
+        this.HIDER = new HiderTeam(instance);
+        this.SEEKER = new SeekerTeam(instance);
+        this.SPECS = new SpectatorTeam(instance);
     }
 
 
@@ -46,8 +51,16 @@ public class TeamHelper {
         LOBBY.addPlayer(player);
     }
 
-    public boolean isSeeker(Player damager) {
-        return SEEKER.containsPlayer(damager);
+    public boolean isSeeker(Player player) {
+        return SEEKER.containsPlayer(player);
+    }
+
+    public boolean isHider(Player player) {
+        return HIDER.containsPlayer(player);
+    }
+
+    public boolean isSpectator(Player player) {
+        return SPECS.containsPlayer(player);
     }
 
     public GameTeam getTeamOfPlayer(Player player) {

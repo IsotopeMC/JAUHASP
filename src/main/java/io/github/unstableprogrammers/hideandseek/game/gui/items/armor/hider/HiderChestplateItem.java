@@ -5,6 +5,6 @@ import org.bukkit.Material;
 
 public class HiderChestplateItem extends GameItem {
     public HiderChestplateItem() {
-        super("Verstecker Brustplatte", Material.NETHERITE_CHESTPLATE, 1);
+        super("Verstecker Brustplatte", Material.NETHERITE_CHESTPLATE, 1, true);
     }
 }
