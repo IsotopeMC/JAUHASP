@@ -19,6 +19,7 @@ public class PlayerDeathListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
 
+        event.setKeepInventory(true);
         event.getDrops().clear();
         event.setDeathMessage(null);
 

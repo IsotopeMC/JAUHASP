@@ -64,7 +64,11 @@ public class TeamHelper {
     }
 
     public GameTeam getTeamOfPlayer(Player player) {
-        return players.get(player);
+        if(players.containsKey(player)) {
+            return players.get(player);
+        }
+
+        return null;
     }
 
     public void setToHider(Player player) {

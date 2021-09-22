@@ -28,7 +28,7 @@ public abstract class GameTeam {
         this.players.add(player);
         this.updateInventory(player);
 
-        //TODO: Update Hidden Players
+        this.instance.updateHiddenPlayers();
     }
 
     public String getName() {
@@ -38,11 +38,15 @@ public abstract class GameTeam {
     public void removePlayer(Player player) {
         this.players.remove(player);
 
-        //TODO: Update Hidden Players
+        this.instance.updateHiddenPlayers();
     }
 
     public boolean containsPlayer(Player player) {
         return this.players.contains(player);
+    }
+
+    public boolean isHidden() {
+        return this.hidden;
     }
 
     public abstract void updateInventory(Player player);
