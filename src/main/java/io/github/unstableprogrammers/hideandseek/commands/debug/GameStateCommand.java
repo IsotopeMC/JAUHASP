@@ -7,13 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GameStateCommand implements CommandExecutor {
-
-    protected final HideAndSeek instance;
-
-    public GameStateCommand(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record GameStateCommand(HideAndSeek instance) implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

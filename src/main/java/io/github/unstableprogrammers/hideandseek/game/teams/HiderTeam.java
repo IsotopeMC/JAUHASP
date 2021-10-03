@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class HiderTeam extends GameTeam {
 
     public HiderTeam(HideAndSeek instance) {
-        super(instance, "Hider", Color.RED, false);
+        super(instance, "Hider", Color.RED, false, false);
     }
 
     @Override

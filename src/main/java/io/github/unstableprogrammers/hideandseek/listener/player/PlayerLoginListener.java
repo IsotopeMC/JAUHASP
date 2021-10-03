@@ -5,13 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
-public class PlayerLoginListener implements Listener {
-
-    protected HideAndSeek instance;
-
-    public PlayerLoginListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record PlayerLoginListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void on(PlayerLoginEvent event) {

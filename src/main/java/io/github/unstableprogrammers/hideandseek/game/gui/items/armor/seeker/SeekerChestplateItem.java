@@ -7,6 +7,6 @@ import org.bukkit.Material;
 public class SeekerChestplateItem extends GameItem {
     public SeekerChestplateItem() {
         super("Sucher Brustplatte", Material.LEATHER_CHESTPLATE, 1, true);
-        setColor(Color.fromRGB(128,0,0));
+        setColor(Color.fromRGB(128, 0, 0));
     }
 }

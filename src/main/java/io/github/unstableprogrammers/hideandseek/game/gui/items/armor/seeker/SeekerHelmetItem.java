@@ -7,6 +7,6 @@ import org.bukkit.Material;
 public class SeekerHelmetItem extends GameItem {
     public SeekerHelmetItem() {
         super("Verstecker Helm", Material.LEATHER_HELMET, 1, true);
-        setColor(Color.fromRGB(128,0,0));
+        setColor(Color.fromRGB(128, 0, 0));
     }
 }

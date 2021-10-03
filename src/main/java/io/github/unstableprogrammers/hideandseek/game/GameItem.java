@@ -25,7 +25,7 @@ public class GameItem {
         ItemHelper helper = new ItemHelper(this.getMaterial());
         helper.setAmount(this.getAmount()).setDisplayname(this.getName()).setUnbreakable(this.isUnbreakable());
 
-        if(this.getColor() != null) {
+        if (this.getColor() != null) {
             helper.setColor(this.getColor());
         }
 
@@ -48,11 +48,11 @@ public class GameItem {
         return this.color;
     }
 
-    public Boolean isUnbreakable() {
-        return this.unbreakable;
-    }
-
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public Boolean isUnbreakable() {
+        return this.unbreakable;
     }
 }

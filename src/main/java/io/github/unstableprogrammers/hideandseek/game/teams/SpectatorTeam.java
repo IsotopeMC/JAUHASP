@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 public class SpectatorTeam extends GameTeam {
 
     public SpectatorTeam(HideAndSeek instance) {
-        super(instance, "Spectator", Color.GRAY, true);
+        super(instance, "Spectator", Color.GRAY, true, true);
     }
 
     @Override
     public void updateInventory(Player player) {
-
+        player.getInventory().clear();
     }
 
     @Override

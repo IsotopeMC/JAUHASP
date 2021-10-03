@@ -15,7 +15,7 @@ import java.util.Set;
 
 public abstract class GameScoreboard implements Scoreboard {
 
-    private Scoreboard board;
+    private final Scoreboard board;
 
     public GameScoreboard() {
         this.board = Objects.requireNonNull(Bukkit.getScoreboardManager()).getNewScoreboard();

@@ -17,13 +17,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 
-public class GameProtectionListener implements Listener {
-
-    protected final HideAndSeek instance;
-
-    public GameProtectionListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record GameProtectionListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -93,7 +87,7 @@ public class GameProtectionListener implements Listener {
         }
 
         //Wenn einer von beiden Spectaor ist.
-        if(instance.teams.isSpectator(damager) || instance.teams.isSpectator(damaged)) {
+        if (instance.teams.isSpectator(damager) || instance.teams.isSpectator(damaged)) {
             event.setCancelled(true);
         }
     }

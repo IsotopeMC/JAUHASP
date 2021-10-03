@@ -7,13 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class PlayerDeathListener implements Listener {
-
-    protected HideAndSeek instance;
-
-    public PlayerDeathListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record PlayerDeathListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -23,9 +17,9 @@ public class PlayerDeathListener implements Listener {
         event.getDrops().clear();
         event.setDeathMessage(null);
 
-        new LightningBoltDeath(player.getLocation());
+        new LightningBoltDeath(instance, player.getLocation());
 
-        if(instance.teams.isHider(player)) {
+        if (instance.teams.isHider(player)) {
             instance.teams.setToSpectator(player);
         }
 

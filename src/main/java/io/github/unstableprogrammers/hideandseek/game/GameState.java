@@ -1,6 +1,5 @@
 package io.github.unstableprogrammers.hideandseek.game;
 
-@SuppressWarnings("FieldMayBeFinal")
 public enum GameState {
     STARTING(false, false, false, false, false),
     LOBBY(true, false, false, true, true),

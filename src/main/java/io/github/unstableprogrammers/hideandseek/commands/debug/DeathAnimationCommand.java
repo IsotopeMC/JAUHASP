@@ -7,14 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class DeathAnimationCommand implements CommandExecutor {
-
-    protected HideAndSeek instance;
-
-    public DeathAnimationCommand(HideAndSeek instance) {
-        this.instance = instance;
-    }
-
+public record DeathAnimationCommand(HideAndSeek instance) implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,7 +17,7 @@ public class DeathAnimationCommand implements CommandExecutor {
 
         if (args.length != 0) {
             switch (args[0]) {
-                case "LIGHTNING_BOLT" -> new LightningBoltDeath(player.getLocation());
+                case "LIGHTNING_BOLT" -> new LightningBoltDeath(instance, player.getLocation());
                 default -> player.sendMessage(instance.PREFIX + "Keine gültige Animation!");
             }
         }

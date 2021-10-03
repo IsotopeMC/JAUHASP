@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class LobbyTeam extends GameTeam {
 
     public LobbyTeam(HideAndSeek instance) {
-        super(instance, "Lobby", Color.GRAY, false);
+        super(instance, "Lobby", Color.GRAY, false, false);
     }
 
     @Override

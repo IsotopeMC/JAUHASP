@@ -9,13 +9,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class QuitItemListener implements Listener {
-
-    protected HideAndSeek instance;
-
-    public QuitItemListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record QuitItemListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void onUse(PlayerInteractEvent event) {

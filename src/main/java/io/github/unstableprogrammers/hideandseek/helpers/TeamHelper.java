@@ -64,7 +64,7 @@ public class TeamHelper {
     }
 
     public GameTeam getTeamOfPlayer(Player player) {
-        if(players.containsKey(player)) {
+        if (players.containsKey(player)) {
             return players.get(player);
         }
 

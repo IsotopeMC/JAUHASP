@@ -1,13 +1,15 @@
 package io.github.unstableprogrammers.hideandseek.game.visuals.deaths;
 
+import io.github.unstableprogrammers.hideandseek.HideAndSeek;
 import io.github.unstableprogrammers.hideandseek.game.visuals.DeathVisuals;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
 
 public class LightningBoltDeath extends DeathVisuals {
-    public LightningBoltDeath(Location loc) {
-        super(loc);
+
+    public LightningBoltDeath(HideAndSeek instance, Location loc) {
+        super(instance, loc);
     }
 
     @Override

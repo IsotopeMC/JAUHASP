@@ -7,13 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerJoinQuitListener implements Listener {
-
-    protected HideAndSeek instance;
-
-    public PlayerJoinQuitListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record PlayerJoinQuitListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {

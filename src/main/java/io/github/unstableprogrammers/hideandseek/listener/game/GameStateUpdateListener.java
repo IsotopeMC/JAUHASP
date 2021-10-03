@@ -6,13 +6,7 @@ import io.github.unstableprogrammers.hideandseek.game.events.GameStateUpdateEven
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class GameStateUpdateListener implements Listener {
-
-    protected final HideAndSeek instance;
-
-    public GameStateUpdateListener(HideAndSeek instance) {
-        this.instance = instance;
-    }
+public record GameStateUpdateListener(HideAndSeek instance) implements Listener {
 
     @EventHandler
     public void onStateChange(GameStateUpdateEvent event) {
