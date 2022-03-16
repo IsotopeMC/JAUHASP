@@ -1,7 +1,7 @@
 name: HideAndSeek
 version: ${version}
-main: io.github.unstableprogrammers.hideandseek.HideAndSeek
-api-version: 1.17
+main: dev.isotopemc.hideandseek.HideAndSeek
+api-version: 1.18
 prefix: HideSeek
 authors: [ GameWithJerry ]
 description: Minigame - Hide and Seek
