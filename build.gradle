@@ -7,17 +7,17 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-group = 'me.gamewithjerry'
+group = 'dev.isotopemc'
 version "git-${getVersionMetadata()}"
 
-sourceCompatibility = '1.16'
-targetCompatibility = '1.16'
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
     maven {
-        name = 'spigotmc-repo'
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        name = 'papermc'
+        url = 'https://papermc.io/repo/repository/maven-public/'
     }
     maven {
         name = 'sonatype'
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
 }
 
 processResources {
