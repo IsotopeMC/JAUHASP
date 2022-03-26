@@ -2,27 +2,30 @@ package dev.isotopemc.hideandseek.commands.debug;
 
 import dev.isotopemc.hideandseek.HideAndSeek;
 import dev.isotopemc.hideandseek.game.visuals.deaths.LightningBoltDeath;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import net.minestom.server.command.builder.Command;
+import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.entity.Player;
 
-public record DeathAnimationCommand(HideAndSeek instance) implements CommandExecutor {
+public class DeathAnimationCommand extends Command {
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!(sender instanceof Player player)) {
-            return false;
-        }
+    public DeathAnimationCommand() {
+        super("deathanimation");
 
-        if (args.length != 0) {
-            switch (args[0]) {
-                case "LIGHTNING_BOLT" -> new LightningBoltDeath(instance, player.getLocation());
-                default -> player.sendMessage(instance.PREFIX + "Keine gültige Animation!");
+        setDefaultExecutor((sender, context)-> {
+            sender.sendMessage("Kein Argument angegeben!");
+        });
+
+        var typeArgument = ArgumentType.String("type");
+
+        addSyntax((sender, context) -> {
+           final String type = context.get(typeArgument);
+
+           assert sender instanceof Player;
+
+            switch (type) {
+                case "LIGHTNING_BOLT" -> new LightningBoltDeath((Player) sender);
+                default -> sender.sendMessage(HideAndSeek.PREFIX + "Keine gültige Animation!");
             }
-        }
-
-        return false;
+        }, typeArgument);
     }
 }

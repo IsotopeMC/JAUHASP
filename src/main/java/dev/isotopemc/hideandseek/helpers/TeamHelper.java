@@ -6,7 +6,7 @@ import dev.isotopemc.hideandseek.game.teams.HiderTeam;
 import dev.isotopemc.hideandseek.game.teams.LobbyTeam;
 import dev.isotopemc.hideandseek.game.teams.SeekerTeam;
 import dev.isotopemc.hideandseek.game.teams.SpectatorTeam;
-import org.bukkit.entity.Player;
+import net.minestom.server.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,38 +34,38 @@ public class TeamHelper {
     }
 
     public void removeFromTeam(Player player) {
-        if (players.containsKey(player)) {
-            players.get(player).removePlayer(player);
+        if (this.players.containsKey(player)) {
+            this.players.get(player).removePlayer(player);
         }
     }
 
     public void setToSpectator(Player player) {
         this.removeFromTeam(player);
         this.players.put(player, SPECS);
-        SPECS.addPlayer(player);
+        this.SPECS.addPlayer(player);
     }
 
     public void setToLobby(Player player) {
         this.removeFromTeam(player);
-        this.players.put(player, LOBBY);
-        LOBBY.addPlayer(player);
+        this.players.put(player, this.LOBBY);
+        this.LOBBY.addPlayer(player);
     }
 
     public boolean isSeeker(Player player) {
-        return SEEKER.containsPlayer(player);
+        return this.SEEKER.containsPlayer(player);
     }
 
     public boolean isHider(Player player) {
-        return HIDER.containsPlayer(player);
+        return this.HIDER.containsPlayer(player);
     }
 
     public boolean isSpectator(Player player) {
-        return SPECS.containsPlayer(player);
+        return this.SPECS.containsPlayer(player);
     }
 
     public GameTeam getTeamOfPlayer(Player player) {
-        if (players.containsKey(player)) {
-            return players.get(player);
+        if (this.players.containsKey(player)) {
+            return this.players.get(player);
         }
 
         return null;
@@ -73,13 +73,13 @@ public class TeamHelper {
 
     public void setToHider(Player player) {
         this.removeFromTeam(player);
-        this.players.put(player, HIDER);
-        HIDER.addPlayer(player);
+        this.players.put(player, this.HIDER);
+        this.HIDER.addPlayer(player);
     }
 
     public void setToSeeker(Player player) {
         this.removeFromTeam(player);
-        this.players.put(player, SEEKER);
-        SEEKER.addPlayer(player);
+        this.players.put(player, this.SEEKER);
+        this.SEEKER.addPlayer(player);
     }
 }

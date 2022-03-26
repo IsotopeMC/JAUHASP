@@ -2,30 +2,34 @@ package dev.isotopemc.hideandseek.commands.debug;
 
 import dev.isotopemc.hideandseek.HideAndSeek;
 import dev.isotopemc.hideandseek.game.GameState;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import net.minestom.server.command.builder.Command;
+import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.entity.Player;
 
-public record GameStateCommand(HideAndSeek instance) implements CommandExecutor {
+public class GameStateCommand extends Command {
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!(sender instanceof Player player)) {
-            return false;
-        }
+    public GameStateCommand() {
+        super("gamestate");
 
-        if (args.length != 0) {
-            switch (args[0]) {
-                case "LOBBY" -> instance.gamestate = GameState.LOBBY;
-                case "IN_GAME" -> instance.gamestate = GameState.IN_GAME;
-                case "ENDING" -> instance.gamestate = GameState.ENDING;
-                default -> player.sendMessage(instance.PREFIX + "Kein gültiger GameState");
+        setDefaultExecutor((sender, context)-> {
+            sender.sendMessage("Kein Argument angegeben!");
+        });
+
+        var typeArgument = ArgumentType.String("type");
+
+        addSyntax((sender, context) -> {
+            final String type = context.get(typeArgument);
+
+            assert sender instanceof Player;
+
+            switch (type) {
+                case "LOBBY" -> HideAndSeek.getInstance().gamestate = GameState.LOBBY;
+                case "IN_GAME" -> HideAndSeek.getInstance().gamestate = GameState.IN_GAME;
+                case "ENDING" -> HideAndSeek.getInstance().gamestate = GameState.ENDING;
+                default -> sender.sendMessage(HideAndSeek.PREFIX + "Kein gültiger GameState");
             }
-        }
 
-        player.sendMessage(instance.PREFIX + "Dein aktueller GameState ist: " + instance.gamestate.name());
-        return true;
+            sender.sendMessage(HideAndSeek.PREFIX + "Dein aktueller GameState ist: " + HideAndSeek.getInstance().gamestate.name());
+        }, typeArgument);
     }
 }

@@ -1,16 +1,13 @@
 package dev.isotopemc.hideandseek.game.visuals;
 
-import dev.isotopemc.hideandseek.HideAndSeek;
-import org.bukkit.Location;
+import net.minestom.server.entity.Player;
 
 public abstract class DeathVisuals {
 
-    protected HideAndSeek instance;
-    protected Location location;
+    protected Player player;
 
-    public DeathVisuals(HideAndSeek instance, Location loc) {
-        this.location = loc;
-        this.instance = instance;
+    public DeathVisuals(Player player) {
+        this.player = player;
         execute();
     }
 

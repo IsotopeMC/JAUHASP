@@ -1,19 +1,21 @@
 package dev.isotopemc.hideandseek.game;
 
 import dev.isotopemc.hideandseek.HideAndSeek;
-import org.bukkit.Color;
-import org.bukkit.entity.Player;
+import net.minestom.server.color.Color;
+import net.minestom.server.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameTeam {
 
+    protected HideAndSeek instance;
+
     protected final String name;
     protected final Color color;
     protected final Boolean hidden;
     protected final Boolean canFly;
-    protected HideAndSeek instance;
+
     protected List<Player> players = new ArrayList<>();
 
     public GameTeam(HideAndSeek instance, String name, Color color, Boolean hidden, Boolean canFly) {
@@ -29,8 +31,8 @@ public abstract class GameTeam {
         this.players.add(player);
         this.updateInventory(player);
 
-        this.instance.updateHiddenPlayers();
-        player.setAllowFlight(this.canFly());
+        //this.instance.updateHiddenPlayers();
+        player.setAllowFlying(this.canFly());
     }
 
     public String getName() {
@@ -40,8 +42,8 @@ public abstract class GameTeam {
     public void removePlayer(Player player) {
         this.players.remove(player);
 
-        this.instance.updateHiddenPlayers();
-        player.setAllowFlight(false);
+        //this.instance.updateHiddenPlayers();
+        player.setAllowFlying(false);
     }
 
     public boolean containsPlayer(Player player) {

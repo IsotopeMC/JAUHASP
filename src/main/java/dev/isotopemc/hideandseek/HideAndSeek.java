@@ -1,27 +1,18 @@
 package dev.isotopemc.hideandseek;
 
-import dev.isotopemc.hideandseek.commands.HNSCommands;
+import dev.isotopemc.hideandseek.commands.debug.DeathAnimationCommand;
+import dev.isotopemc.hideandseek.commands.debug.GameStateCommand;
+import dev.isotopemc.hideandseek.commands.debug.GameTeamCommand;
 import dev.isotopemc.hideandseek.game.GameState;
-import dev.isotopemc.hideandseek.game.GameTeam;
-import dev.isotopemc.hideandseek.game.events.GameStateUpdateEvent;
 import dev.isotopemc.hideandseek.helpers.TeamHelper;
-import dev.isotopemc.hideandseek.helpers.WorldHelper;
-import dev.isotopemc.hideandseek.listener.HNSListener;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import net.minestom.server.MinecraftServer;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-public final class HideAndSeek extends JavaPlugin {
+public class HideAndSeek {
 
     public static HideAndSeek instance;
 
-    public final String PREFIX = "§7[§eHide§2N§6Seek§7]§r ";
-    public final String NO_PERMISSIONS = PREFIX + "§4Dazu hast du keine Rechte!";
+    public static final String PREFIX = "§7[§eHide§2N§6Seek§7]§r ";
 
-    private final ExecutorService executors = Executors.newCachedThreadPool();
     public GameState gamestate = GameState.STARTING;
     public TeamHelper teams = new TeamHelper(this);
 
@@ -29,37 +20,27 @@ public final class HideAndSeek extends JavaPlugin {
         return instance;
     }
 
-    @Override
-    public void onEnable() {
+    public static void main(String[] args) {
+        HideAndSeek instance = new HideAndSeek();
+        instance.start();
+    }
+
+    public void start() {
         instance = this;
 
-        //register Listener & Commands
-        HNSListener.registerListener(this);
-        HNSCommands.registerCommands(this);
+        // Initialize the server
+        MinecraftServer minecraftServer = MinecraftServer.init();
 
-        //perform various actions on all worlds
-        Bukkit.getServer().getWorlds().forEach((world) -> {
-            WorldHelper.setGameRules(world);
-            WorldHelper.killNonMapEntities(world);
-        });
+        //Initialize commands
+        MinecraftServer.getCommandManager().register(new DeathAnimationCommand());
+        MinecraftServer.getCommandManager().register(new GameStateCommand());
+        MinecraftServer.getCommandManager().register(new GameTeamCommand());
 
-        setGamestate(GameState.LOBBY);
+        // Start the server
+        minecraftServer.start("0.0.0.0", 25565);
     }
 
-    @Override
-    public void onDisable() {
-    }
-
-    public void setGamestate(GameState state) {
-        this.gamestate = state;
-        Bukkit.getPluginManager().callEvent(new GameStateUpdateEvent(state));
-    }
-
-    public Executor getExecutor() {
-        return this.executors;
-    }
-
-    public void updateHiddenPlayers() {
+    /*public void updateHiddenPlayers() {
         Bukkit.getOnlinePlayers().forEach((player) -> Bukkit.getOnlinePlayers().forEach((otherPlayer) -> {
             if (player != otherPlayer) {
                 GameTeam otherTeam = this.teams.getTeamOfPlayer(otherPlayer);
@@ -71,5 +52,5 @@ public final class HideAndSeek extends JavaPlugin {
                 }
             }
         }));
-    }
+    }*/
 }

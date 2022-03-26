@@ -3,8 +3,7 @@ package dev.isotopemc.hideandseek.game.teams;
 import dev.isotopemc.hideandseek.HideAndSeek;
 import dev.isotopemc.hideandseek.game.GameTeam;
 import dev.isotopemc.hideandseek.game.gui.inventories.SeekerInventory;
-import org.bukkit.Color;
-import org.bukkit.entity.Player;
+import net.minestom.server.entity.Player;
 
 public class SeekerTeam extends GameTeam {
 
